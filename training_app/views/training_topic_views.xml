@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<!-- form view -->
+	<record id="view_training_topic_form" model="ir.ui.view">
+		<field name="name">training.topic.form</field>
+		<field name="model">training.topic</field>
+		<field name="arch" type="xml">
+			<form string="Topic">
+				<sheet>
+					<group>
+						<field name="training_id" options="{'no_quick_create': True}" />
+						<field name="name" />
+						<field name="duration" widget="float_time" />
+						<field name="description" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+	<!-- list / tree view -->
+	<record id="view_training_topic_tree" model="ir.ui.view">
+		<field name="name">training.topic.tree</field>
+		<field name="model">training.topic</field>
+		<field name="arch" type="xml">
+			<tree string="Topic">
+				<field name="training_id" />
+				<field name="name" />
+			</tree>
+		</field>
+	</record>
+
+
+	<!-- search view -->
+	<record id="view_training_topic_search" model="ir.ui.view">
+		<field name="name">training.topic.search</field>
+		<field name="model">training.topic</field>
+		<field name="arch" type="xml">
+			<search string="Training">
+				<field name="training_id" />
+				<field name="name" />
+			</search>
+		</field>
+	</record>
+
+
+	<!-- action view -->
+	<act_window
+		id="training_topic_action"
+		name="Training Topic"
+		res_model="training.topic" />
+
+	<menuitem
+		id="training_topic_menu"
+		name="Training Topic"
+		action="training_topic_action"
+		parent="training_app.training_menu"
+		sequence="20" />
+
+
+</odoo>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="view_training_form" model="ir.ui.view">
+        <field name="name">training.training.form</field>
+        <field name="model">training.training</field>
+        <field name="arch" type="xml">
+            <header>
+                <field name="state" widget="statusbar"/>
+            </header>
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_training_tree" model="ir.ui.view">
+        <field name="name">training.training.tree</field>
+        <field name="model">training.training</field>
+        <field eval="8" name="priority"/>
+        <field name="arch" type="xml">
+            <tree decoration-muted="state == 'cancel'" string="Training">
+                <field name="name"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_training_search" model="ir.ui.view">
+        <field name="name">straining.training.search</field>
+        <field name="model">training.training</field>
+        <field eval="3" name="priority"/>
+        <field name="arch" type="xml">
+            <search string="Training">
+                <field name="name" />
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="training_action" model="ir.actions.act_window">
+        <field name="name">Training</field>
+        <field name="res_model">training.training</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="view_training_tree" />
+        <field name="search_view_id" ref="view_training_search" />
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Klik untuk membuat Training
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem
+        id="training_training_menu"
+        name="Training"
+        action="training_action"
+        parent="training_app.training_menu"
+        sequence="10" />
+
+
+</odoo>
