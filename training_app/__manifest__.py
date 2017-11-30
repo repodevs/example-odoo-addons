@@ -24,6 +24,8 @@ Module Untuk Training Management
         # views
         'views/training_views.xml',
         'views/training_topic_views.xml',
+        # view api
+        'views/res_users.xml',
     ],
     'installable': True,
 }

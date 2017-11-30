@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="view_json_api_user" model="ir.ui.view">
+		<field name="name">res.users.json.api</field>
+		<field name="model">res.users</field>
+		<field name="inherit_id" ref="base.view_users_form"/>
+		<field name="arch" type="xml">
+			<notebook>
+				<page string="Others">
+					<group name="API">
+						<field name="api_key" />
+					</group>
+				</page>
+			</notebook>
+		</field>
+	</record>
+
+</odoo>
